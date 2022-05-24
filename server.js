@@ -1,12 +1,10 @@
 const express=require('express')
 const dotenv=require('dotenv')
+const bootcamp=require('./routes/bootcamp')
 dotenv.config({path:'./config/config.env'});
 const app=express();
+app.use('/api/v1/bootcamps',bootcamp)
 const PORT=process.env.port || 5000;
-app.get('/api/v1/bootcamps',(req,res)=>{
-    res.status(200).json({success:true,
-    msg:'show all bootcamps'});
-})
 app.listen(PORT,()=>{
     console.log(`server is listening in on port ${PORT}`);
 });
